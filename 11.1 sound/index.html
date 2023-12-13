@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags for responsive design and character encoding -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
+    <title>Joshua's Programming Project</title>
+    <!-- Linking the main and music stylesheets -->
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="music.css">
+</head>
+
+<body>
+    <!-- Placeholder for the header -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Music section with controls and audio source -->
+        <section id="music">
+            <div class="controls">
+                <button id="playButton">Play</button>
+                <button id="pauseButton">Pause</button>
+            </div>
+            <!-- Volume control slider -->
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+            <!-- Audio source -->
+            <audio id="spaceMusic" src="space.wav" preload="auto"></audio>
+        </section>
+    </main>
+
+    <!-- Placeholder for the footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Event listener for when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded and parsed');
+
+            // Fetch and insert header.html into the header-placeholder div
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                });
+
+            // Fetch and insert footer.html into the footer-placeholder div
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        });
+
+        // Variables for the music and volume control
+        var spaceMusic = document.getElementById('spaceMusic');
+        var volumeSlider = document.getElementById('volumeSlider');
+
+        // Event listener for the play button
+        document.getElementById('playButton').addEventListener('click', function() {
+            spaceMusic.play();
+        });
+
+        // Event listener for the pause button
+        document.getElementById('pauseButton').addEventListener('click', function() {
+            spaceMusic.pause();
+        });
+
+        // Event listener for the volume control slider
+        volumeSlider.addEventListener('input', function() {
+            spaceMusic.volume = volumeSlider.value;
+        });
+    </script>
+</body>
+</html>
